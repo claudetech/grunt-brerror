@@ -1,0 +1,36 @@
+{
+  "name": "grunt-brerror",
+  "version": "0.1.0",
+  "description": "Grunt plugin to display compile errors in browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudetech/grunt-brerror"
+  },
+  "keywords": [
+    "grunt",
+    "error",
+    "browser"
+  ],
+  "author": "Daniel Perez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claudetech/grunt-brerror/issues"
+  },
+  "homepage": "https://github.com/claudetech/grunt-brerror",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-newer": "^0.7.0",
+    "load-grunt-tasks": "^0.6.0"
+  },
+  "dependencies": {
+    "opn": "^1.0.0",
+    "underscore": "^1.6.0",
+    "ws": "^0.4.32"
+  }
+}

@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Error while compiling</title>
+</head>
+<body>
+  <% _.each(errors, function(error) { %>
+    <div class="error">
+      <h1>Error while running <%= error.task %></h1>
+      <h2><%= error.description %></h2>
+      <pre><%= error.content %></pre>
+    </div>
+  <% }) %>
+
+  <script>
+    if (typeof WebSocket !== 'undefined') {
+      var ws = new WebSocket("ws://localhost:<%= port %>");
+      ws.onmessage = function (event) {
+        window.close();
+      }
+    }
+  </script>
+</body>
+</html>
