@@ -1,6 +1,47 @@
 <html>
 <head>
   <title>Error while compiling</title>
+  <style>
+    html {
+      font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+    }
+    body {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .error {
+      background: #e67467 -webkit-gradient(linear, left top, left bottom, color-stop(0, #e88074), color-stop(1, #e67467)) repeat-x;
+      background: #e67467 -moz-linear-gradient(top, #e88074 0%, #e67467 100%) repeat-x;
+      background: #e67467 -webkit-linear-gradient(top, #e88074 0%, #e67467 100%) repeat-x;
+      background: #e67467 -o-linear-gradient(top, #e88074 0%, #e67467 100%) repeat-x;
+      background: #e67467 -ms-linear-gradient(top, #e88074 0%, #e67467 100%) repeat-x;
+      background: #e88074;
+      background: #e67467 linear-gradient(top, #e88074 0%, #e67467 100%) repeat-x;
+      zoom: 1;
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px solid #e26153;
+      -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+      position: relative;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      margin: 40px;
+      overflow: hidden;
+    }
+    .error:before,
+    .error:after {
+      content: "";
+      display: table;
+    }
+    .error:after {
+      clear: both;
+    }
+    .error pre {
+      overflow: auto;
+      word-wrap: break-word;
+    }
+  </style>
 </head>
 <body>
   <% _.each(errors, function(error) { %>
