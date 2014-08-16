@@ -1,6 +1,6 @@
 {
   "name": "grunt-brerror",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Grunt plugin to display compile errors in browser.",
   "main": "index.js",
   "scripts": {
