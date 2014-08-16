@@ -18,6 +18,10 @@ npm install --save-dev grunt-brerror
 
 and you are done.
 
+## Screencast
+
+![Screencast](http://res.cloudinary.com/dtdu3sqtl/image/upload/v1408153873/optimised_pozz3l.gif)
+
 ## Usage
 
 You need to run the task `brerror:server` before anything.
