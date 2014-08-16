@@ -70,3 +70,8 @@ and the status of the build is sent with the output.
 The output is collected by hooking `grunt.log` methods.
 
 The server then closes the tab with websokets, and displays the error page when necessary.
+
+## Known limitations
+
+* Does not seem to work with `spanw: false` for watch task
+* Probably buggy if compile tasks are run concurrently
