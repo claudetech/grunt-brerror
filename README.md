@@ -77,5 +77,5 @@ The server then closes the tab with websokets, and displays the error page when 
 
 ## Known limitations
 
-* Does not seem to work with `spanw: false` for watch task
+* Does not seem to work with `spawn: false` for watch task
 * Probably buggy if compile tasks are run concurrently
