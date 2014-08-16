@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  opn             = require 'opn'
+  opn             = require 'opn-bg'
   fs              = require 'fs'
   _               = require 'underscore'
   os              = require 'os'
@@ -29,7 +29,7 @@ module.exports = (grunt) ->
     showError = ->
       errorHtml = template({ errors: errors, port: options.port })
       fs.writeFileSync ERROR_FILE_PATH, errorHtml
-      opn ERROR_FILE_PATH
+      opn ERROR_FILE_PATH, { keepFocus: true }
 
     closeWindow = ->
       client.send('close') for i, client of clients
