@@ -8,14 +8,24 @@ module.exports = (grunt) ->
   currentTask = null
   error = null
   errors = {}
+  hooksRegistered = false
 
-  appendBuffer = (msg) -> buffer += msg
-  appendBufferLn = (msg) -> appendBuffer(msg + "\n")
-  grunt.util.hooker.hook grunt.log, 'write', appendBuffer
-  grunt.util.hooker.hook grunt.log, 'writeln', appendBufferLn
-  grunt.util.hooker.hook grunt.log, 'error', appendBufferLn
+  registerHooks = ->
+    return if hooksRegistered
+    appendBuffer = (msg) -> buffer += msg
+    appendBufferLn = (msg) -> appendBuffer(msg + "\n")
+    grunt.util.hooker.hook grunt.log, 'write', appendBuffer
+    grunt.util.hooker.hook grunt.log, 'writeln', appendBufferLn
+    grunt.util.hooker.hook grunt.log, 'error', appendBufferLn
+    hooksRegistered = true
 
-  grunt.util.hooker.hook grunt.fail, 'warn', ( (e) -> error = e )
+  resetValues = ->
+    error = null
+    buffer = ''
+    currentTask = null
+
+  cleanContent = (desc) ->
+    desc.replace /\[(1;)?[0-9]{1,2}m/g, ''
 
   grunt.registerTask 'brerror:done', ->
     done = @async()
@@ -34,18 +44,23 @@ module.exports = (grunt) ->
           data:
             task: currentTask
             description: error
-            content: buffer
+            content: cleanContent(buffer)
         )
 
-      done ->
-        buffer = ''
-        currentTask = null
-        grunt.option 'force', forceFlag
+      grunt.option 'force', forceFlag
+      done()
 
   grunt.registerTask 'brerror', (task...) ->
     task = task.join ':'
     currentTask = task
     buffer = ''
+
+    # grunt.fail behavior seems to differ from grunt.log functions
+    grunt.util.hooker.hook grunt.fail, 'warn', ( (e) -> error = e )
+
+    registerHooks()
+    resetValues()
+
     grunt.option 'force', true
     grunt.task.run task
     grunt.task.run 'brerror:done'
